@@ -15,25 +15,40 @@ alert(searchQuery)
     }
   return (
     <>
-    <div className="container">
-    <div className="home">
+   <div className="container  text-light">
+  <div className="home">
     <form onSubmit={handleSearch} className="search-form my-5">
-    <div className="input-group flex-nowrap">
- 
-  <input type="text" className="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping" 
-  value={searchQuery}
-  onChange={(e)=> setSearchQuery(e.target.value)}
-  />
-  <button type="submit" className="input-group-text" id="addon-wrapping">Search</button>
-</div>
+      <div className="input-group flex-nowrap">
+        <input
+          type="text"
+          className="form-control bg-dark text-light border-secondary"
+          placeholder="Search"
+          aria-label="Username"
+          aria-describedby="addon-wrapping"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button
+          type="submit"
+          className="input-group-text bg-secondary text-light border-secondary"
+          id="addon-wrapping"
+          
+        >
+          Search
+        </button>
+      </div>
     </form>
-        <div className="movie-list d-flex gap-2 flex-wrap gap-5">
-            {movies.map((movie)=> 
-            movie.title.toLowerCase().startsWith(searchQuery) &&(<MovieCard movie={movie} key={movie.id}/>)
-            )}
-        </div>
+    <div className="movie-list d-flex gap-2 flex-wrap gap-5">
+      {movies.map(
+        (movie) =>
+          movie.title.toLowerCase().startsWith(searchQuery) && (
+            <MovieCard movie={movie} key={movie.id} />
+          )
+      )}
     </div>
-    </div>
+  </div>
+</div>
+
     </>
   )
 }
