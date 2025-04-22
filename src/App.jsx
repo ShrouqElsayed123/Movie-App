@@ -1,23 +1,22 @@
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './App.css'
-// import MovieCard from './components/MovieCard/MovieCard'
-import Home from './Pages/Home/Home'
-import Layout from './components/Layout/Layout'
-import Favorite from './Pages/Favorite/Favorite'
+import "./css/App.css";
+import Favorites from "./pages/Favorites";
+import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
+import { MovieProvider } from "./contexts/MovieContext";
+import NavBar from "./components/NavBar";
 
 function App() {
-let router=createBrowserRouter([
-  {path:'/',element:<Layout />,children:[
-    {index:true,element:<Home />},
-    {path:'favorite',element:<Favorite />}
-  ]}
-])
   return (
-    <>
-   <RouterProvider router={router}/>
-    </>
-  )
+    <MovieProvider>
+      <NavBar />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+      </main>
+    </MovieProvider>
+  );
 }
 
-export default App
+export default App;
